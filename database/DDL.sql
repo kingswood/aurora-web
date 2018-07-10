@@ -1,3 +1,5 @@
+use aurora;
+
 CREATE TABLE `aurora`.`training_info` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
@@ -27,8 +29,6 @@ CREATE TABLE `aurora`.`training_info` (
   `is_correct` TINYINT NULL,
 	`model_id` INT NULL,
   PRIMARY KEY (`id`));
-  
-ADD INDEX `FK_MODEL_INFO_idx` (`model_id` ASC);
 
 
 ALTER TABLE `aurora`.`predict_record` 

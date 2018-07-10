@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>AURORA</title>
+    <script data-require="angular.js@*" data-semver="1.2.0-rc1" src="Scripts/angular.min.js"></script>
+    <script src="index.js"></script>
+    <script src="Scripts/jquery-1.12.4.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+</head>
+<body ng-controller='NavCtrl'>
+    <nav class="navbar navbar-default">
+        <div class="container" id="exTab">
+            <div class="navbar-header">
+                <img width="140" height="120" src="Images/aurora.png" />
+            </div>
+            <div>
+                <ul class="nav nav-tabs navbar-right">
+                    <li data-toggle="tab">
+                        <a href="#section" ng-click="setParmeter(CMCDB)">CMCDB</a>
+                    </li>
+                    <li data-toggle="tab">
+                        <a href="#section" ng-click="setParmeter(DBS)">DBS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="section">
+        <div class="container">
+            <ul class="nav nav-pills nav-stacked col-md-2">
+                <li class="active"><a href="#train" data-toggle="pill">Train</a></li>
+                <li><a href="#predict" data-toggle="pill">Predict</a></li>
+            </ul>
+            <div class="tab-content col-md-10">
+                <div class="tab-pane active" id="train">
+                    <div ng-include src="'views/train.html'"></div>
+                    <!--<h>Train</h>
+                    <p>
+                        <input id="fileUpload" name="fileUpload" type="file" class="file" multiple data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+                    </p>-->
+                </div>
+                <div class="tab-pane" id="predict">
+                    <div ng-include src="'views/predict.html'"></div>
+                </div>
+            </div><!-- tab content -->
+        </div><!-- end of container -->
+    </section>
+    <footer></footer>
+</body>
+</html>

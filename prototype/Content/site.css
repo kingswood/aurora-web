@@ -1,0 +1,9 @@
+﻿#exTab .nav {
+    margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+    #exTab .navbar-right {
+        margin-top: 80px;
+    }
+}

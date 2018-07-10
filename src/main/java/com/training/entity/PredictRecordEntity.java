@@ -1,43 +1,29 @@
 package com.training.entity;
-import java.io.Serializable;
 
-import javax.persistence.*;
-
-import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="predict_record")
+@Table(name = "predict_record")
 public class PredictRecordEntity extends BaseEntity {
-	
-//	private static final long serialVersionUID = 1L;
-//	
-//	@Id
-//    @GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@Column(name="ID")
-//	private Integer id;
 
-	@Column(name="content")
+	@Column(name = "content")
 	private String content;
 
-	@Column(name="predict_result")
+	@Column(name = "predict_result")
 	private String predictResult;
 
-	@Column(name="actual_result")
+	@Column(name = "actual_result")
 	private String actualResult;
 
-	@Column(name="is_correct")
+	@Column(name = "is_correct")
 	private Boolean isCorrect;
 
-	@Column(name="model_info")
+	@Column(name = "model_info")
 	private ModelInfoEntity modelInfo;
 
-//	public Integer getId() {
-//		return id;
-//	}
-//
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
+	
 
 	public String getContent() {
 		return content;
@@ -69,5 +55,5 @@ public class PredictRecordEntity extends BaseEntity {
 
 	public void setIsCorrect(Boolean isCorrect) {
 		this.isCorrect = isCorrect;
-	} 
+	}
 }

@@ -1,9 +1,9 @@
 package com.training.entity;
-import java.io.Serializable;
-
-import javax.persistence.*;
-
 import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="model_info")

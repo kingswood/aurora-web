@@ -1,10 +1,13 @@
-package com.volvo.aurora.repository;
+package com.volvo.aurora.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
@@ -13,12 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.volvo.aurora.dao.*;
 import com.volvo.aurora.entity.*;
-import com.volvo.aurora.repository.TrainingInfoDAO;
-
-import java.util.List;
-
-import javax.transaction.Transactional;
 
 
 @Transactional
@@ -26,45 +25,29 @@ import javax.transaction.Transactional;
 @RunWith(JUnitPlatform.class)
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-class TraininginfoDAOTest {
-	
+public class IPredictRecordEntityRepositoryTest {
+
 	@Autowired
-	private TrainingInfoDAO dao; 
+	private IPredictRecordEntityRepository dao;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		System.out.println("test");
 	}
 
 	@Test
-	void testTraininginfoDAO() {
-		System.out.println("test testTraininginfoDAO");
+	void test() {
 		fail("Not yet implemented");
 	}
-
+	
 	@Test
-	void testGetAlltraininginfo() {
-		fail("Not yet implemented");
-	}
+	void testGetAll() {
+		try {
+			
+		List<PredictRecordEntity> result = dao.findAll();
+		assertNotEquals(0, result.size());
+		}
+		catch (Exception ex) {
+			System.out.println(ex);
+			}
 
-	@Test
-	void testGettraininginfoById() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testAddTraininginfo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testUpdateTraininginfo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testDeleteTraininginfo() {
-		fail("Not yet implemented");
-	}
-
-}
+}}

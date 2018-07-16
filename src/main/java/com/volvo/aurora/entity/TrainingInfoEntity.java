@@ -1,38 +1,34 @@
 package com.volvo.aurora.entity;
+import java.io.Serializable;
+
+import javax.persistence.*;
 
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 @Entity
-@Table(name = "training_info")
-public class TrainingInfoEntity extends BaseEntity {
+@Table(name="training_info")
+public class TrainingInfoEntity  extends BaseEntity   {
 
-	@Column(name = "name")
+	@Column(name="name")
 	private String name;
 
-	@Column(name = "training_date")
+	@Column(name="training_date")
 	private Date trainingDate;
 
-	@Column(name = "training_number")
+	@Column(name="training_number")
 	private Integer trainingSetNumber;
 
-	@Column(name = "test_number")
+	@Column(name="test_number")
 	private Integer testSetNumber;
 
-	@Column(name = "accuracy")
+	@Column(name="accuracy")
 	private Integer accuracy;
 
-	@Column(name = "total_number")
+	@Column(name="total_number")
 	private Integer totalNumber;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "model_id")
+	@JoinColumn(name="model_id")
 	private ModelInfoEntity resultModel;
 
 	public ModelInfoEntity getResultModel() {

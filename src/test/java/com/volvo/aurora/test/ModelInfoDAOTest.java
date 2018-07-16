@@ -1,6 +1,11 @@
-package com.volvo.aurora.repository;
+package com.volvo.aurora.test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,17 +13,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.volvo.aurora.entity.*;
-import com.volvo.aurora.repository.ModelInfoDAO;
-
-import java.util.List;
-
-import javax.transaction.Transactional;
+import com.volvo.aurora.dao.IModelInfoRepository;
+import com.volvo.aurora.entity.ModelInfoEntity;
 
 
 @Transactional
@@ -29,7 +29,7 @@ import javax.transaction.Transactional;
 class ModelInfoDAOTest {
 
 	@Autowired
-	private ModelInfoDAO dao;
+	private IModelInfoRepository dao;
 
 	
 	@BeforeEach
@@ -45,21 +45,21 @@ class ModelInfoDAOTest {
 	void testGetAll() {
 		try {
 			
-		List<ModelInfoEntity> result = dao.getAll();
+			List<ModelInfoEntity> result = dao.findAll();
 		assertNotEquals(0, result.size());
 		}
 		//fail("Not yet implemented");
 		catch (Exception ex) {
 		System.out.println(ex);
-	}
+		}
 	}
 
 	@Test
 	void testGetById() {
 		try {
 		System.out.println("test get by id");
-		ModelInfoEntity entity = dao.getById(1);
-		System.out.println(entity.getId());
+		Optional<ModelInfoEntity> entity = dao.findById(1);
+		//System.out.println(entity.getId());
 		assertNotEquals(null,entity);
 		//fail("Not yet implemented");
 		}
@@ -68,19 +68,17 @@ class ModelInfoDAOTest {
 		}
 	}
 
-//	@Test
-//	void testAdd() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testDeleteById() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testUpdate() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	void createModel() {
+		try {
+			ModelInfoEntity entity = new ModelInfoEntity();
+			entity.setModelName("test2");
+			dao.save(entity);
+			assertNotNull(entity.getId());
+		}
+		catch(Exception ex) {
+			
+		}
+	}
 
 }

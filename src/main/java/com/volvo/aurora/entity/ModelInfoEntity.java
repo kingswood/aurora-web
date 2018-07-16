@@ -1,13 +1,18 @@
 package com.volvo.aurora.entity;
-import java.sql.Date;
+//import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.sql.Date;
 
 @Entity
 @Table(name="model_info")
 public class ModelInfoEntity extends BaseEntity {
+
+//	@Id
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@Column(name="ID")
+//	private Integer id;
 
 
 	@Column(name="training_date")
@@ -21,6 +26,14 @@ public class ModelInfoEntity extends BaseEntity {
 
 	@Column(name="path")
 	private String path;
+
+//	public Integer getId() {
+//		return id;
+//	}
+//
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
 
 	public Date getTrainingDate() {
 		return trainingDate;
@@ -52,7 +65,5 @@ public class ModelInfoEntity extends BaseEntity {
 
 	public void setPath(String path) {
 		this.path = path;
-	}
-
-	
+	}	
 }

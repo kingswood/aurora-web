@@ -5,4 +5,4 @@
  * @author v0cn447
  *
  */
-package toberemoved.trainingdomain;
+package com.volvo.aurora.service;

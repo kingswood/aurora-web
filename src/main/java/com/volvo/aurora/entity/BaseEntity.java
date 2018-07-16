@@ -1,26 +1,20 @@
 package com.volvo.aurora.entity;
+//import java.io.Serializable;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
+@MappedSuperclass
 public class BaseEntity {
-
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Integer id;
+	    @GeneratedValue(strategy=GenerationType.IDENTITY)
+		@Column(name="ID")
+		private Integer id;
+		
+		public Integer getId() {
+			return id;
+		}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
+		public void setId(Integer id) {
+			this.id = id;
+		}
+		
 }

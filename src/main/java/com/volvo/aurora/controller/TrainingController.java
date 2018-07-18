@@ -53,8 +53,11 @@ public class TrainingController {
 			System.out.println("test");
 			return new ResponseEntity<List<TrainingInfoEntity>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-
 	}
+	
+//	public ResponseEntity<> getLatestTrainingInfo(){
+//		
+//	}
 
 	@PostMapping("/traininginfo/training")
 	public ResponseEntity<Void> addTrainingInfo(@RequestParam("file") MultipartFile file,

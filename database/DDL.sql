@@ -1,59 +1,48 @@
 use aurora;
 
-CREATE TABLE `aurora`.`training_info` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(45) NULL,
-  `training_number` INT NULL,
-  `test_number` INT NULL,
-  `total_number` INT NULL,
-  `accuracy` INT NULL,
-  `model_id` INT NULL,
-	`training_info` DATE NULL,
-  PRIMARY KEY (`id`));
-  
-
-  CREATE TABLE `aurora`.`model_info` (
-  `id` INT NOT NULL,
-  `training_date` DATE NULL,
-  `model_name` VARCHAR(45) NULL,
-  `training_method` VARCHAR(45) NULL,
-  `path` VARCHAR(200) NULL,
-	`training_id` INT NULL,
-  PRIMARY KEY (`id`));
-
-  CREATE TABLE `aurora`.`predict_record` (
-  `id` INT NOT NULL,
-  `content` BLOB NULL,
-  `predict_result` VARCHAR(45) NULL,
-  `actual_result` VARCHAR(45) NULL,
-  `is_correct` TINYINT NULL,
-	`model_id` INT NULL,
-  PRIMARY KEY (`id`));
+drop table predict_record;
+drop table model_info;
+drop table training_info;
 
 
-ALTER TABLE `aurora`.`predict_record` 
+CREATE TABLE IF NOT EXISTS `aurora`.`predict_record` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `content` BLOB NULL DEFAULT NULL,
+  `predict_result` VARCHAR(45) NULL DEFAULT NULL,
+  `actual_result` VARCHAR(45) NULL DEFAULT NULL,
+  `is_correct` TINYINT(4) NULL DEFAULT NULL,
+  `model_id` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_MODEL_INFO_idx` (`model_id` ASC),
+  CONSTRAINT `FK_MODEL_INFO`
+    FOREIGN KEY (`model_id`)
+    REFERENCES `aurora`.`model_info` (`id`))
+ENGINE = InnoDB
 
-ADD CONSTRAINT `FK_MODEL_INFO`
-  FOREIGN KEY (`model_id`)
-  REFERENCES `aurora`.`model_info` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+CREATE TABLE IF NOT EXISTS `aurora`.`model_info` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `training_date` DATE NULL DEFAULT NULL,
+  `model_name` VARCHAR(45) NULL DEFAULT NULL,
+  `training_method` VARCHAR(45) NULL DEFAULT NULL,
+  `path` VARCHAR(200) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
 
-  
-ALTER TABLE `aurora`.`model_info` 
-ADD INDEX `FK_TRAINING_INFO_idx` (`training_id` ASC);
-ALTER TABLE `aurora`.`model_info` 
-ADD CONSTRAINT `FK_TRAINING_INFO`
-  FOREIGN KEY (`training_id`)
-  REFERENCES `aurora`.`training_info` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
 
-ALTER TABLE `aurora`.`training_info` 
-ADD INDEX `FP_MODEL_INFO_idx` (`model_id` ASC);
-ALTER TABLE `aurora`.`training_info` 
-ADD CONSTRAINT `FP_MODEL_INFO`
-  FOREIGN KEY (`model_id`)
-  REFERENCES `aurora`.`model_info` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+CREATE TABLE IF NOT EXISTS `aurora`.`training_info` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL DEFAULT NULL,
+  `training_number` INT(11) NULL DEFAULT NULL,
+  `test_number` INT(11) NULL DEFAULT NULL,
+  `total_number` INT(11) NULL DEFAULT NULL,
+  `accuracy` INT(11) NULL DEFAULT NULL,
+  `model_id` INT(11) NULL DEFAULT NULL,
+  `training_date` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FP_MODEL_INFO_idx` (`model_id` ASC),
+  CONSTRAINT `FP_MODEL_INFO`
+    FOREIGN KEY (`model_id`)
+    REFERENCES `aurora`.`model_info` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2

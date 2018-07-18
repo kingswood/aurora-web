@@ -1,4 +1,4 @@
-package com.volvo.aurora.repository;
+/*package com.volvo.aurora.repository;
 
 import com.volvo.aurora.entity.*;
 
@@ -6,3 +6,4 @@ import com.volvo.aurora.entity.*;
 public interface IPredictRecordDAO<PredictRecordEntity extends BaseEntity> extends ICommonDAO<BaseEntity>  {
 
 }
+*/

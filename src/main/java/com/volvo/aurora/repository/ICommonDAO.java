@@ -1,4 +1,4 @@
-package com.volvo.aurora.repository;
+/*package com.volvo.aurora.repository;
 
 import java.util.List;
 
@@ -14,3 +14,4 @@ public interface ICommonDAO<T extends BaseEntity>
     void deleteById(int id);
 
 }
+*/

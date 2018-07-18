@@ -1,4 +1,4 @@
-package com.volvo.aurora.repository;
+/*package com.volvo.aurora.repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -84,3 +84,4 @@ class ModelInfoDAOTest {
 //	}
 
 }
+*/

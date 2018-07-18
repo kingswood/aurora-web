@@ -1,4 +1,4 @@
-package com.volvo.aurora.repository;
+/*package com.volvo.aurora.repository;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -74,3 +74,4 @@ public class CommonDAO<T extends BaseEntity> implements ICommonDAO<T> {
 
 }
 
+*/

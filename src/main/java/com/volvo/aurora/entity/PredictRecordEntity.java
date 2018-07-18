@@ -20,10 +20,6 @@ public class PredictRecordEntity extends BaseEntity {
 	@Column(name = "is_correct")
 	private Boolean isCorrect;
 
-	@Column(name = "model_info")
-	private ModelInfoEntity modelInfo;
-
-	
 
 	public String getContent() {
 		return content;
@@ -56,4 +52,5 @@ public class PredictRecordEntity extends BaseEntity {
 	public void setIsCorrect(Boolean isCorrect) {
 		this.isCorrect = isCorrect;
 	}
+
 }

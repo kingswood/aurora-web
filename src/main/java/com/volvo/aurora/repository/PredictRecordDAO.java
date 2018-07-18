@@ -1,4 +1,4 @@
-package com.volvo.aurora.repository;
+/*package com.volvo.aurora.repository;
 
 import com.volvo.aurora.entity.*;
 
@@ -10,3 +10,4 @@ public class PredictRecordDAO<PredictRecordEntity extends BaseEntity> extends Co
 	}
 
 }
+*/

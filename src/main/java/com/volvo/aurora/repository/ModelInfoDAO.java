@@ -1,4 +1,4 @@
-package com.volvo.aurora.repository;
+/*package com.volvo.aurora.repository;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -27,3 +27,4 @@ public class ModelInfoDAO extends CommonDAO<ModelInfoEntity>{
 //
 //	}
 }
+*/

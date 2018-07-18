@@ -1,4 +1,4 @@
-package com.volvo.aurora.test;
+package com.volvo.aurora.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package com.volvo.aurora.test;
+package com.volvo.aurora.dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,15 +19,16 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.volvo.aurora.dao.*;
 import com.volvo.aurora.entity.*;
 
+
 @Transactional
 @Rollback
 @RunWith(JUnitPlatform.class)
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-class ITrainingInfoEntityRepositoryTest {
+public class IPredictRecordEntityRepositoryTest {
 
 	@Autowired
-	private ITrainingInfoEntityRepository dao;
+	private IPredictRecordEntityRepository dao;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -37,42 +38,16 @@ class ITrainingInfoEntityRepositoryTest {
 	void test() {
 		fail("Not yet implemented");
 	}
-
+	
 	@Test
 	void testGetAll() {
 		try {
-
-			List<TrainingInfoEntity> result = dao.findAll();
-			assertNotEquals(0, result.size());
-		} catch (Exception ex) {
-			System.out.println(ex);
+			
+		List<PredictRecordEntity> result = dao.findAll();
+		assertNotEquals(0, result.size());
 		}
-	}
-
-	@Test
-	void testSave() {
-		try {
-			java.sql.Date time = new java.sql.Date(System.currentTimeMillis());
-
-			ModelInfoEntity me = new ModelInfoEntity();
-			me.setModelName("test3");
-			me.setPath("../../test");
-
-			me.setTrainingDate(time);
-
-			TrainingInfoEntity te = new TrainingInfoEntity();
-			te.setName("te1");
-			te.setAccuracy(8000);
-			te.setResultModel(me);
-			te.setTotalNumber(19999);
-			te.setTestSetNumber(18888);
-			te.setTrainingDate(time);
-
-			dao.save(te);
-			assertNotNull(te.getId());
-
-		} catch (Exception ex) {
+		catch (Exception ex) {
 			System.out.println(ex);
-		}
-	}
-}
+			}
+
+}}

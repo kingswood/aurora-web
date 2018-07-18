@@ -1,12 +1,20 @@
 package com.volvo.aurora.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "predict_record")
-public class PredictRecordEntity extends BaseEntity {
+public class PredictRecordEntity extends BaseEntity  {
+
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "ID")
+//	private Integer id;
 
 	@Column(name = "content")
 	private String content;
@@ -19,6 +27,19 @@ public class PredictRecordEntity extends BaseEntity {
 
 	@Column(name = "is_correct")
 	private Boolean isCorrect;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "model_info")
+	private ModelInfoEntity modelInfo;
+
+	public ModelInfoEntity getModelInfo() {
+		return modelInfo;
+	}
+
+	public void setModelInfo(ModelInfoEntity modelInfo) {
+		this.modelInfo = modelInfo;
+	}
+
 
 
 	public String getContent() {

@@ -11,4 +11,6 @@ public interface IModelInfoService {
 	HashMap<Integer, String> GetModelBrief();
 	
 	ModelInfoEntity CreateModel(ModelInfoEntity model);
+	
+	Optional<ModelInfoEntity> GetModelById(Integer id);
 }

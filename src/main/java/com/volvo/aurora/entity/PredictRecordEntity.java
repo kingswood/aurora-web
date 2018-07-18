@@ -1,10 +1,11 @@
 package com.volvo.aurora.entity;
 
-import java.io.Serializable;
-
-import javax.persistence.*;
-
-import java.sql.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "predict_record")
@@ -39,13 +40,7 @@ public class PredictRecordEntity extends BaseEntity  {
 		this.modelInfo = modelInfo;
 	}
 
-//	public Integer getId() {
-//		return id;
-//	}
-//
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
+
 
 	public String getContent() {
 		return content;
@@ -78,4 +73,5 @@ public class PredictRecordEntity extends BaseEntity  {
 	public void setIsCorrect(Boolean isCorrect) {
 		this.isCorrect = isCorrect;
 	}
+
 }

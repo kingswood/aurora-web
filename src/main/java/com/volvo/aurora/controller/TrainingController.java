@@ -1,31 +1,34 @@
 package com.volvo.aurora.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.io.File;
-import java.io.*;
-import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.volvo.aurora.dto.PredictPara;
-import com.volvo.aurora.entity.*;
-import com.volvo.aurora.service.*;
+import com.volvo.aurora.entity.ModelInfoEntity;
+import com.volvo.aurora.entity.PredictRecordEntity;
+import com.volvo.aurora.entity.TrainingInfoEntity;
+import com.volvo.aurora.service.IModelInfoService;
+import com.volvo.aurora.service.IPredictRecordService;
+import com.volvo.aurora.service.ITrainingInfoService;
+
 
 @RestController
 public class TrainingController {

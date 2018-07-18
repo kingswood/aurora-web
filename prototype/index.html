@@ -1,54 +1,264 @@
-﻿<!DOCTYPE html>
-<html ng-app="app">
-<head>
-    <title>AURORA</title>
-    <script data-require="angular.js@*" data-semver="1.2.0-rc1" src="Scripts/angular.min.js"></script>
-    <script src="index.js"></script>
-    <script src="Scripts/jquery-1.12.4.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="Content/site.css" rel="stylesheet" />
-</head>
-<body ng-controller='NavCtrl'>
-    <nav class="navbar navbar-default">
-        <div class="container" id="exTab">
-            <div class="navbar-header">
-                <img width="140" height="120" src="Images/aurora.png" />
-            </div>
-            <div>
-                <ul class="nav nav-tabs navbar-right">
-                    <li data-toggle="tab">
-                        <a href="#section" ng-click="setParmeter(CMCDB)">CMCDB</a>
-                    </li>
-                    <li data-toggle="tab">
-                        <a href="#section" ng-click="setParmeter(DBS)">DBS</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!DOCTYPE html>
+<html lang="en">
 
-    <section id="section">
-        <div class="container">
-            <ul class="nav nav-pills nav-stacked col-md-2">
-                <li class="active"><a href="#train" data-toggle="pill">Train</a></li>
-                <li><a href="#predict" data-toggle="pill">Predict</a></li>
-            </ul>
-            <div class="tab-content col-md-10">
-                <div class="tab-pane active" id="train">
-                    <div ng-include src="'views/train.html'"></div>
-                    <!--<h>Train</h>
-                    <p>
-                        <input id="fileUpload" name="fileUpload" type="file" class="file" multiple data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
-                    </p>-->
-                </div>
-                <div class="tab-pane" id="predict">
-                    <div ng-include src="'views/predict.html'"></div>
-                </div>
-            </div><!-- tab content -->
-        </div><!-- end of container -->
-    </section>
-    <footer></footer>
-</body>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aurora - Text classification tool</title>
+
+    <!-- Bootstrap core CSS -->
+	<link href="vendor/donut/css/style.css" rel="stylesheet">
+	<link href="vendor/donut/css/simple-donut.css" rel="stylesheet">	
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+	
+	<script src="vendor/chartjs/Chart.bundle.js"></script>
+	<script src="vendor/chartjs/utils.js"></script>
+	
+	<script src="vendor/donut/simple-donut-jquery.js"></script>
+	
+  </head>
+
+  <body>
+
+	
+  
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">AURORA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">CM/CDB</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">DBS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<form>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+          <h1 class="my-4"></h1>
+          <div class="list-group">
+            <a href="#" class="list-group-item active">Train the model</a>
+            <a href="#" class="list-group-item">Classification</a>            
+          </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+			
+          <div class="card mt-4">
+            
+            <div class="card-body">
+                     
+             
+              <input type="file" id="localInputFile"><br><br>
+			  <a href="#" class="btn btn-primary">Upload Training Data</a>
+            </div>
+          </div>
+          <!-- /.card -->
+
+          <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+              Training Data: 2800 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Testing Data: 900 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Updated Time: 07/18/2018
+            </div>
+									 				
+			
+			
+			<table width="100%" >
+				<tr style="heigh: 100px">
+				<td></td><td>&nbsp</td>
+				</tr>
+			
+				<tr style="vertical-align: center">
+				
+				<td width="50%" style="">
+					<!--Accuracy div-->						
+					<div class="">
+						<canvas id="accuracy-area"></canvas>				
+					</div>
+				</td>
+				<td width="50%">
+					<!--Categories div-->
+					<div class="">
+						<canvas id="chart-area"></canvas>				
+					</div>
+				</td>
+				
+				
+				
+				</tr>
+				
+				<tr style="heigh: 100px">
+				<td></td><td>&nbsp</td>
+				</tr>
+				
+			</table>		
+			
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+	
+	</form>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Volvo Shared IT Service 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
+	
+	<script language="javascript">
+
+	var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+	};
+
+	var config = {
+			type: 'doughnut',
+			data: {
+				datasets: [{
+					data: [
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+					],
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+						window.chartColors.green,
+						window.chartColors.blue,
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'Red',
+					'Orange',
+					'Yellow',
+					'Green',
+					'Blue'
+				]
+			},
+			options: {
+				responsive: true,
+				cutoutPercentage: 30,
+				legend: {
+					position: '',
+				},
+				title: {
+					display: true,
+					text: 'Categories'
+				},
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('chart-area').getContext('2d');
+			window.myDoughnut = new Chart(ctx, config);
+		};
+
+	// update accuracy chart number
+	
+
+		var config2 = {
+			type: 'doughnut',
+			
+			data: {
+				datasets: [{
+					data: [
+						90,
+						10
+					],
+					backgroundColor: [						
+						'#87CEFA',
+						window.chartColors.white
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'passed',
+					'failed'					
+				]
+			},
+			options: {
+				responsive: true,
+				cutoutPercentage: 80,
+				legend: {
+					position: '',
+				},
+				title: {
+					display: true,
+					text: 'Accuracy'
+				},
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				}
+			}
+		};
+
+		window.onload = function() {
+		
+			var ctx = document.getElementById('chart-area').getContext('2d');
+			window.myDoughnut = new Chart(ctx, config);
+		
+			var ctx2 = document.getElementById('accuracy-area').getContext('2d');
+			window.myDoughnut2 = new Chart(ctx2, config2);
+			
+			
+			
+		};
+	
+	</script>
+	
+  </body>
+
 </html>

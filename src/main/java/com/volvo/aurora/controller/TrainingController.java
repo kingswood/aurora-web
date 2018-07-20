@@ -14,6 +14,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,10 +59,13 @@ public class TrainingController {
 		}
 	}
 	
-//	public ResponseEntity<> getLatestTrainingInfo(){
-//		
-//	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/traininginfo/latesttraining")
+	public ResponseEntity<TrainingInfoEntity> getLatestTrainingInfo(){
+		return null;
+	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/traininginfo/training")
 	public ResponseEntity<Void> addTrainingInfo(@RequestParam("file") MultipartFile file,
 			@RequestParam("method") String method) throws IOException {
@@ -109,6 +113,7 @@ public class TrainingController {
 		return response;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/modelinfo/all")
 	public ResponseEntity<List<ModelInfoEntity>> getModelList() {
 		List<ModelInfoEntity> list = modelService.GetAllModelInfo();
@@ -116,25 +121,26 @@ public class TrainingController {
 		return response;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("predict/predict")
-	public ResponseEntity<String> predict(@RequestBody PredictPara para) {
-
-		 //Integer modelid = para.getModelId();
+	public ResponseEntity<PredictPara> predict(@RequestBody PredictPara para) {
 		Optional<ModelInfoEntity> model = modelService.GetModelById(para.getModelId());
 		if (model != null) {
-			String modelPath = model.get().getPath();
-			String predictResult = callPy(para.Info, modelPath);
+//			String modelPath = model.get().getPath();
+//			String predictResult = callPy(para.Info, modelPath);
+//
+//			PredictRecordEntity pe = new PredictRecordEntity();
+//			pe.setContent(predictResult);
+//			pe.setModelInfo(model.get());
+//
+//			predictService.PredictNewInfo(pe);
+			
+			para.Category = "test";
 
-			PredictRecordEntity pe = new PredictRecordEntity();
-			pe.setContent(predictResult);
-			pe.setModelInfo(model.get());
-
-			predictService.PredictNewInfo(pe);
-
-			return new ResponseEntity(HttpStatus.OK);
+			return new ResponseEntity<PredictPara>(para, HttpStatus.OK);
 		}
 
-		return new ResponseEntity("Input Error", HttpStatus.OK);
+		return new ResponseEntity<PredictPara>(HttpStatus.OK);
 
 	}
 

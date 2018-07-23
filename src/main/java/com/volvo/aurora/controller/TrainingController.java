@@ -92,6 +92,8 @@ public class TrainingController {
 		f.flush();
 		f.close();
 
+		//TODO add py script, and call py to train model, then save plk to disk, then save plk info (model and training info) to db
+		
 		// 1 call py, pass path to method
 		String resultPath = new String();
 
@@ -126,6 +128,8 @@ public class TrainingController {
 	public ResponseEntity<PredictPara> predict(@RequestBody PredictPara para) {
 		Optional<ModelInfoEntity> model = modelService.GetModelById(para.getModelId());
 		if (model != null) {
+			//TODO: add call plk logic and uncomment following method 
+			
 //			String modelPath = model.get().getPath();
 //			String predictResult = callPy(para.Info, modelPath);
 //

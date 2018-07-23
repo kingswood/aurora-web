@@ -29,7 +29,7 @@ public class PredictRecordEntity extends BaseEntity  {
 	private Boolean isCorrect;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "model_info")
+	@JoinColumn(name = "model_id")
 	private ModelInfoEntity modelInfo;
 
 	public ModelInfoEntity getModelInfo() {

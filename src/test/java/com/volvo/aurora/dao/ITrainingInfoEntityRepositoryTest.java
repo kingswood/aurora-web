@@ -67,6 +67,7 @@ class ITrainingInfoEntityRepositoryTest {
 			te.setTotalNumber(19999);
 			te.setTestSetNumber(18888);
 			te.setTrainingDate(time);
+			te.setCategoryResult("abdcdee");
 
 			dao.save(te);
 			assertNotNull(te.getId());
